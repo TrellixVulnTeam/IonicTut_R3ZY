@@ -181,8 +181,8 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/FrankyB/fGrams/Projects/Tutorials/Ionic/photo-gallery/src/polyfills.ts */"hN/g");
-module.exports = __webpack_require__(/*! /Users/FrankyB/fGrams/Projects/Tutorials/Ionic/photo-gallery/node_modules/@angular-devkit/build-angular/src/webpack/jit-polyfills.js */"rZy+");
+__webpack_require__(/*! /Users/FrankyB/fGrams/Projects/Tutorials/Ionic/IonicTut/photo-gallery/src/polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! /Users/FrankyB/fGrams/Projects/Tutorials/Ionic/IonicTut/photo-gallery/node_modules/@angular-devkit/build-angular/src/webpack/jit-polyfills.js */"rZy+");
 
 
 /***/ }),
