@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/FrankyB/fGrams/Projects/Tutorials/Ionic/IonicTut/photo-gallery/src/main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Users\benne_000\WebstormProjects\IonicTut\photo-gallery\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -134,7 +134,7 @@ AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n");
 
 /***/ }),
 

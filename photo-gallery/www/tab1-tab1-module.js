@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>\n      Tab 1\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <ion-header collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">Tab 1</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <app-explore-container name=\"Tab 1 page\"></app-explore-container>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Test Tab\r\n    </ion-title>\r\n\r\n\t<ion-button (click)= \"log()\">\r\n\t\t<ion-icon name=\"hammer\"></ion-icon>\r\n\t</ion-button>\r\n\r\n\t<ion-button (click) = \"toggleFlameState(fstate.name)\">\r\n\t\t<ion-icon name=\"{{flameState}}\" #fstate ></ion-icon>\r\n\t</ion-button>\r\n\r\n\t<ion-button (click) = \"alertClouds()\">\r\n\t\t<ion-icon name=\"cloudy-night\"></ion-icon>\r\n\t</ion-button>\r\n\r\n\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-header collapse=\"condense\">\r\n    <ion-toolbar>\r\n      <ion-title size=\"large\">Butts</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n\r\n<ion-content>\r\n\t<ion-list>\r\n\t\t<ion-li *ngFor=\"let msg of messages\">{{msg}}</ion-li>\r\n\t</ion-list>\r\n</ion-content>\r\n\r\n\r\n\r\n  <app-explore-container name=\"Tab 1 page\"></app-explore-container>\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -27,14 +27,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _raw_loader_tab1_page_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./tab1.page.html */ "8MT7");
 /* harmony import */ var _tab1_page_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tab1.page.scss */ "rWyk");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _services_event_manager_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/event-manager.service */ "atrn");
+
 
 
 
 
 let Tab1Page = class Tab1Page {
-    constructor() { }
+    constructor(eventMan) {
+        this.eventMan = eventMan;
+        this.messages = [];
+        this.flameState = 'flame-outline';
+    }
+    log() {
+        this.messages.push('whack, ');
+    }
+    toggleFlameState(state) {
+        //alert(`currentState = ${this.flameState}, incomming = ${state}`);
+        if (state === 'flame') {
+            this.flameState = 'flame-outline';
+        }
+        else {
+            this.flameState = 'flame';
+        }
+    }
+    alertClouds() {
+        this.eventMan.getSubject().next('farts');
+    }
 };
-Tab1Page.ctorParameters = () => [];
+Tab1Page.ctorParameters = () => [
+    { type: _services_event_manager_service__WEBPACK_IMPORTED_MODULE_4__["EventManagerService"] }
+];
 Tab1Page = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
         selector: 'app-tab1',
@@ -79,6 +102,48 @@ Tab1PageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])
         exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
     })
 ], Tab1PageRoutingModule);
+
+
+
+/***/ }),
+
+/***/ "atrn":
+/*!***************************************************!*\
+  !*** ./src/app/services/event-manager.service.ts ***!
+  \***************************************************/
+/*! exports provided: EventManagerService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventManagerService", function() { return EventManagerService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "qCKp");
+
+
+
+let EventManagerService = class EventManagerService {
+    constructor() {
+        this.testSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.getObservable().subscribe((t) => { this.doAlert(t); });
+    }
+    doAlert(thing) {
+        alert(`WARNING ${thing} clouds forecast`);
+    }
+    getObservable() {
+        return this.testSubject.asObservable();
+    }
+    getSubject() {
+        return this.testSubject;
+    }
+};
+EventManagerService.ctorParameters = () => [];
+EventManagerService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], EventManagerService);
 
 
 

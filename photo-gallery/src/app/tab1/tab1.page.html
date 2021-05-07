@@ -5,20 +5,25 @@
     </ion-title>
 
 	<ion-button (click)= "log()">
-		<ion-icon name="hammer"></ion-icon> 
+		<ion-icon name="hammer"></ion-icon>
 	</ion-button>
 
 	<ion-button (click) = "toggleFlameState(fstate.name)">
-		<ion-icon name="{{flameState}}" #fstate ></ion-icon> 
+		<ion-icon name="{{flameState}}" #fstate ></ion-icon>
 	</ion-button>
 
-	<ion-button>
-		<ion-icon name="cloudy-night"></ion-icon> 
+	<ion-button (click) = "alertClouds(ctype.value)">
+		<ion-icon name="cloudy-night"></ion-icon>
 	</ion-button>
 
 
   </ion-toolbar>
 </ion-header>
+
+<ion-item>
+  <ion-label > Cloud Type: </ion-label>
+  <ion-input > name="cType" #ctype></ion-input>
+</ion-item>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
@@ -31,7 +36,18 @@
 	<ion-list>
 		<ion-li *ngFor="let msg of messages">{{msg}}</ion-li>
 	</ion-list>
-</ion-content> 
+
+  <ion-item-divider [hidden]="warning == null">
+  <ion-title>WARNING!!</ion-title>
+  <ion-label>{{warning}} </ion-label>
+  <ion-button (click) = "clearWarning()">
+    <ion-icon name="trash"></ion-icon>
+  </ion-button>
+  </ion-item-divider>
+
+
+
+  </ion-content>
 
 
 
